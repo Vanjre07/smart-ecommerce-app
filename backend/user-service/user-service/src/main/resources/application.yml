@@ -1,0 +1,15 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: user-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/e_commerce
+    username: postgres
+    password: "0000"
+
+  jpa:
+    hibernate:
+      ddl-auto: update
