@@ -13,17 +13,17 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.ecommerce</groupId>
-    <artifactId>product-service</artifactId>
+    <groupId>com.ecommerce.auth</groupId>
+    <artifactId>auth-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>product-service</name>
-    <description>Product Microservice</description>
+    <name>auth-service</name>
+    <description>Authentication &amp; Authorization Microservice</description>
 
     <properties>
         <java.version>17</java.version>
+        <jjwt.version>0.11.5</jjwt.version>
         <lombok.version>1.18.30</lombok.version>
     </properties>
-
 
     <dependencies>
 
@@ -31,6 +31,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
         <!-- JPA + Hibernate -->
@@ -43,6 +49,32 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- JWT -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${jjwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ecommerce</groupId>
+            <artifactId>common-lib</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${jjwt.version}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -59,13 +91,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- Common Shared Library -->
-        <dependency>
-            <groupId>com.ecommerce</groupId>
-            <artifactId>common-lib</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
 
     </dependencies>
 
@@ -90,19 +115,10 @@
                 </configuration>
             </plugin>
 
-
             <!-- Spring Boot Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
             </plugin>
 
         </plugins>
